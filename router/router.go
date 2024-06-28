@@ -16,7 +16,7 @@ func Initialize() {
 	// Get PORT from enviroment
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8000"
+		port = "8080"
 	}
 	// Running the server
 	router.Run("0.0.0.0:" + port) // listen and serve on 0.0.0.0:8080
