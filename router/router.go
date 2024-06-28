@@ -1,13 +1,23 @@
 package router
 
-import "github.com/gin-gonic/gin"
+import (
+	"os"
+
+	"github.com/gin-gonic/gin"
+)
 
 func Initialize() {
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-	r.Run() // listen and serve on 0.0.0.0:8080
+	// Initialize the router
+	router := gin.Default()
+	
+	// Initialize routes
+	initializeRoutes(router)
+
+	// Get PORT from enviroment
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8000"
+	}
+	// Running the server
+	router.Run("0.0.0.0:" + port) // listen and serve on 0.0.0.0:8080
 }
