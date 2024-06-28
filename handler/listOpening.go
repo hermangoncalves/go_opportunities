@@ -1,10 +1,12 @@
 package handler
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/hermangoncalves/go_opportunities/schemas"
+)
 
 func ListOpeningHandler(ctx *gin.Context) {
-	sendSuccess(ctx, "list-opening", map[string]interface{}{
-		"name": "Herman",
-		"age": 23,
-	})
+	openings := []schemas.Opening{}
+	// if err := db.Find
+	sendSuccess(ctx, "list-opening", openings)
 }
