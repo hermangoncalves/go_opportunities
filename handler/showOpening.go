@@ -17,8 +17,7 @@ func ShowOpeningHandler(ctx *gin.Context) {
 
 	opening := schemas.Opening{}
 	if err := db.First(&opening, id).Error; err != nil {
-		fmt.Printf("ShowOpening error: %v", err.Error)
-		sendError(ctx, http.StatusBadRequest, "opening not found")
+		sendError(ctx, http.StatusBadRequest, fmt.Sprintf("opening with %v not found", id))
 		return
 	}
 
