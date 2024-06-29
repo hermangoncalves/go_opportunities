@@ -14,3 +14,12 @@ func sendSuccess(ctx *gin.Context, op string, data interface{}) {
 		"data": data,
 	})
 }
+
+
+func sendError(ctx *gin.Context, code int, message string) {
+	ctx.Header("Content-Type", "application/json")
+	ctx.JSON(code, gin.H{
+		"message": message,
+		"errorCode": code,
+	})
+}
